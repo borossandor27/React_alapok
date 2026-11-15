@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.kartya {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 0 1rem 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-right: 0.5rem;
+}

@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# React alapok
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bevezető példák a React legfontosabb alapfogalmaihoz. Minden fogalomhoz egy rövid,
+magyarázó megjegyzésekkel ellátott komponens tartozik az `src/components` mappában.
 
-## Available Scripts
+## Indítás
 
-In the project directory, you can run:
+Szükséges: [Node.js](https://nodejs.org/) (LTS verzió).
 
-### `npm start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Az alkalmazás a <http://localhost:3000> címen nyílik meg, és mentéskor automatikusan frissül.
 
-### `npm test`
+További parancsok:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Parancs         | Mit csinál                                                   |
+| --------------- | ------------------------------------------------------------ |
+| `npm test`      | Lefuttatja a teszteket (figyelő módban)                      |
+| `npm run build` | Elkészíti az éles, optimalizált változatot a `build` mappába |
 
-### `npm run build`
+## A projekt felépítése
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Fájl                | Szerepe                                                            |
+| ------------------- | ------------------------------------------------------------------ |
+| `public/index.html` | Az egyetlen HTML oldal; a React a `<div id="root">` elembe rajzol  |
+| `src/index.js`      | Belépési pont: itt jön létre a gyökér, és itt jelenik meg az `App` |
+| `src/App.jsx`       | Gyökérkomponens, ebből épül fel a felület                          |
+| `src/components/`   | A példakomponensek                                                 |
+| `src/App.test.js`   | Tesztek (Jest + React Testing Library)                             |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Példák
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| # | Fogalom                                 | Fájl                                 |
+| - | --------------------------------------- | ------------------------------------ |
+| 1 | Komponens, props, alapértelmezett érték | `src/components/Udvozles.jsx`        |
+| 2 | Kompozíció, `children` prop             | `src/components/Kartya.jsx`          |
+| 3 | Állapot (`useState`), eseménykezelés    | `src/components/Szamlalo.jsx`        |
+| 4 | Feltételes megjelenítés                 | `src/components/BelepesiAllapot.jsx` |
+| 5 | Lista, `key`, vezérelt űrlapmező        | `src/components/TeendoLista.jsx`     |
+| 6 | Mellékhatás (`useEffect`), takarítás    | `src/components/Ora.jsx`             |
 
-### `npm run eject`
+## A legfontosabb szabályok röviden
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **JSX**: JavaScriptbe ágyazott, HTML-hez hasonló jelölés. Kapcsos zárójelek között
+  tetszőleges JavaScript-kifejezés állhat: `{nev}`. A `class` helyett `className`,
+  a `for` helyett `htmlFor` írandó, és minden elemet le kell zárni (`<br />`).
+- **Komponens**: nagybetűvel kezdődő függvény, amely JSX-et ad vissza, egyetlen gyökérelemmel
+  (vagy fragmenttel: `<>...</>`).
+- **Props**: a szülőtől kapott, csak olvasható adatok. Az adat mindig fentről lefelé áramlik.
+- **State**: a komponens saját, változó adata. Csak a beállító függvénnyel módosítható,
+  közvetlenül soha; objektumnál és tömbnél mindig új példányt adunk át.
+- **Hookok** (`useState`, `useEffect`, ...): csak a komponens legfelső szintjén hívhatók,
+  feltételen vagy cikluson belül nem.
+- **`key`**: listaelemeknél egyedi és stabil azonosító kell, hogy a React követni tudja az elemeket.
+- **StrictMode**: fejlesztői módban a React szándékosan kétszer futtatja a komponenseket és az
+  effekteket, hogy a hibák (például hiányzó takarítás) korán kiderüljenek. Éles változatban ez
+  nem történik meg.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Megjegyzés az eszközkészletről
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A projekt [Create React App](https://create-react-app.dev/)-pel készült, amelyet a React csapata
+2025 februárjában elavulttá nyilvánított, és már nem tart karban. Tanulásra a jelenlegi állapot
+használható, de új projektet érdemes [Vite](https://vite.dev/)-tel (`npm create vite@latest`)
+vagy egy keretrendszerrel (például Next.js) indítani.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## További olvasnivaló
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [A React hivatalos dokumentációja](https://react.dev/)
+- [Gyors bevezető](https://react.dev/learn)
+- [Gondolkodás Reactben](https://react.dev/learn/thinking-in-react)
