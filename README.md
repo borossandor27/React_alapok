@@ -12,27 +12,30 @@ npm install
 ```
 
 ```bash
-npm start
+npm run dev
 ```
 
-Az alkalmazás a <http://localhost:3000> címen nyílik meg, és mentéskor automatikusan frissül.
+Az alkalmazás a <http://localhost:5173> címen érhető el, és mentéskor automatikusan frissül.
 
 További parancsok:
 
-| Parancs         | Mit csinál                                                   |
-| --------------- | ------------------------------------------------------------ |
-| `npm test`      | Lefuttatja a teszteket (figyelő módban)                      |
-| `npm run build` | Elkészíti az éles, optimalizált változatot a `build` mappába |
+| Parancs           | Mit csinál                                                  |
+| ----------------- | ----------------------------------------------------------- |
+| `npm test`        | Lefuttatja a teszteket (figyelő módban)                     |
+| `npm run build`   | Elkészíti az éles, optimalizált változatot a `dist` mappába |
+| `npm run preview` | Helyben kiszolgálja az elkészült éles változatot            |
 
 ## A projekt felépítése
 
 | Fájl                | Szerepe                                                            |
 | ------------------- | ------------------------------------------------------------------ |
-| `public/index.html` | Az egyetlen HTML oldal; a React a `<div id="root">` elembe rajzol  |
-| `src/index.js`      | Belépési pont: itt jön létre a gyökér, és itt jelenik meg az `App` |
+| `index.html`        | Az egyetlen HTML oldal; a React a `<div id="root">` elembe rajzol  |
+| `src/main.jsx`      | Belépési pont: itt jön létre a gyökér, és itt jelenik meg az `App` |
 | `src/App.jsx`       | Gyökérkomponens, ebből épül fel a felület                          |
 | `src/components/`   | A példakomponensek                                                 |
-| `src/App.test.js`   | Tesztek (Jest + React Testing Library)                             |
+| `src/App.test.jsx`  | Tesztek (Vitest + React Testing Library)                           |
+| `vite.config.js`    | A Vite és a Vitest beállításai                                     |
+| `public/`           | Változtatás nélkül kiszolgált fájlok (ikonok, `manifest.json`)     |
 
 ## Példák
 
@@ -62,12 +65,10 @@ További parancsok:
   effekteket, hogy a hibák (például hiányzó takarítás) korán kiderüljenek. Éles változatban ez
   nem történik meg.
 
-## Megjegyzés az eszközkészletről
+## Eszközkészlet
 
-A projekt [Create React App](https://create-react-app.dev/)-pel készült, amelyet a React csapata
-2025 februárjában elavulttá nyilvánított, és már nem tart karban. Tanulásra a jelenlegi állapot
-használható, de új projektet érdemes [Vite](https://vite.dev/)-tel (`npm create vite@latest`)
-vagy egy keretrendszerrel (például Next.js) indítani.
+A projekt [Vite](https://vite.dev/)-tel fut, a teszteket a [Vitest](https://vitest.dev/) futtatja.
+JSX-et tartalmazó fájl kiterjesztése `.jsx` legyen, mert a Vite a `.js` fájlokban nem dolgozza fel a JSX-et.
 
 ## További olvasnivaló
 
